@@ -13,7 +13,8 @@ class loginController extends Controller
      */
     public function index()
     {
-        //
+        $logins = login::all();
+        return view('logins.index', compact('logins'));
     }
 
     /**
@@ -21,7 +22,7 @@ class loginController extends Controller
      */
     public function create()
     {
-        //
+        return view('logins.create');
     }
 
     /**
@@ -29,7 +30,21 @@ class loginController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'usuario' => 'required|string|max:255',
+            'senha' => 'required|string|max:255',
+            'tipo_usuario' => 'required|in:aluno,personal,academia'
+        ]);
+
+        login::create($validated);
+        if ($validated['tipo_usuario'] === 'aluno') {
+            return redirect()->route('alunos.index');
+        } elseif ($validated['tipo_usuario'] === 'personal') {
+            return redirect()->route('personals.index');
+        } elseif ($validated['tipo_usuario'] === 'academia') {
+            return redirect()->route('academias.index');
+        }
+        //return redirect()->route('logins.index');
     }
 
     /**
@@ -45,7 +60,19 @@ class loginController extends Controller
      */
     public function edit(login $login)
     {
-        //
+        $validated = $request->validate([
+            'usuario' => 'required|string|max:255',
+            'senha' => 'required|string|max:255',
+            'tipo_usuario' => 'required|in:aluno,personal,academia'
+        ]);
+        $login->update($validated);
+        if ($validated['tipo_usuario'] === 'aluno') {
+            return redirect()->route('alunos.index');
+        } elseif ($validated['tipo_usuario'] === 'personal') {
+            return redirect()->route('personals.index');
+        } elseif ($validated['tipo_usuario'] === 'academia') {
+            return redirect()->route('academias.index');
+        }
     }
 
     /**
@@ -61,6 +88,7 @@ class loginController extends Controller
      */
     public function destroy(login $login)
     {
-        //
+        $login->delete();
+        return redirect()->route('logins.index');
     }
 }
