@@ -20,7 +20,34 @@
                 </div>
             @endif
 
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h4 class="mb-0">Login</h4>
+                </div>
 
+                <div class="card-body">
+                    <form method="POST" action="{{ route('logins.login') }}">
+                        @csrf
+
+                        <div class="mb-3">
+                           <a href="{{ route('logins.cadastrar') }}">
+                            <button type="button" class="btn btn-secondary w-100">
+                                cadastrar-se
+                            </button>
+                            </a>
+                        </div>
+
+                        <div class="mb-3">
+                            <a href="{{ route('logins.logar') }}">
+                            <button type="button" class="btn btn-secondary w-100">
+                                Logar-se
+                            </button>
+                            </a>
+
+                        </div>
+                        
+                    </form>
+                </div>
             
 
         </div>

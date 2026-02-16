@@ -37,14 +37,7 @@ class loginController extends Controller
         ]);
 
         login::create($validated);
-        if ($validated['tipo_usuario'] === 'aluno') {
-            return redirect()->route('alunos.index');
-        } elseif ($validated['tipo_usuario'] === 'personal') {
-            return redirect()->route('personals.index');
-        } elseif ($validated['tipo_usuario'] === 'academia') {
-            return redirect()->route('academias.index');
-        }
-        //return redirect()->route('logins.index');
+        return redirect()->route('logins.index');
     }
 
     /**
@@ -66,13 +59,7 @@ class loginController extends Controller
             'tipo_usuario' => 'required|in:aluno,personal,academia'
         ]);
         $login->update($validated);
-        if ($validated['tipo_usuario'] === 'aluno') {
-            return redirect()->route('alunos.index');
-        } elseif ($validated['tipo_usuario'] === 'personal') {
-            return redirect()->route('personals.index');
-        } elseif ($validated['tipo_usuario'] === 'academia') {
-            return redirect()->route('academias.index');
-        }
+        return redirect()->route('logins.index');
     }
 
     /**
