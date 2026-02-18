@@ -13,8 +13,8 @@ class loginController extends Controller
      */
     public function index()
     {
-        $logins = login::all();
-        return view('logins.index', compact('logins'));
+        $login = login::all();
+        return view('login.index', compact('login'));
     }
 
     /**
@@ -22,7 +22,7 @@ class loginController extends Controller
      */
     public function create()
     {
-        return view('logins.create');
+        return view('login.cadastrar');
     }
 
     /**
@@ -31,13 +31,19 @@ class loginController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'usuario' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
             'senha' => 'required|string|max:255',
             'tipo_usuario' => 'required|in:aluno,personal,academia'
         ]);
+        /*$login = login::where('email', $validated['email'])->first();
 
+        if (!$login || !Hash::check($validated['senha'], $login->senha)) {
+            return response()->json([
+                'message' => 'Credenciais inválidas'
+            ], 401);
+        }*/
         login::create($validated);
-        return redirect()->route('logins.index');
+        return redirect()->route('login.index');
     }
 
     /**
@@ -53,13 +59,8 @@ class loginController extends Controller
      */
     public function edit(login $login)
     {
-        $validated = $request->validate([
-            'usuario' => 'required|string|max:255',
-            'senha' => 'required|string|max:255',
-            'tipo_usuario' => 'required|in:aluno,personal,academia'
-        ]);
-        $login->update($validated);
-        return redirect()->route('logins.index');
+       
+        return redirect()->route('login.index');
     }
 
     /**
@@ -76,6 +77,6 @@ class loginController extends Controller
     public function destroy(login $login)
     {
         $login->delete();
-        return redirect()->route('logins.index');
+        return redirect()->route('login.index');
     }
 }

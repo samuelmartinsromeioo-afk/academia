@@ -1,5 +1,5 @@
-@extends('layouts.logins')
-@section('title', 'Clientes')   
+@extends('layouts.login')
+@section('title', 'Login')   
 @section('content')
 
 <div class="container my-5">
@@ -26,19 +26,19 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('logins.login') }}">
+                    <form method="POST" action="{{ route('login.index') }}">
                         @csrf
 
                         <div class="mb-3">
-                           <a href="{{ route('logins.cadastrar') }}">
+                           <a href="{{ route('login.cadastrar') }}">
                             <button type="button" class="btn btn-secondary w-100">
-                                cadastrar-se
+                                Cadastrar-se
                             </button>
                             </a>
                         </div>
 
                         <div class="mb-3">
-                            <a href="{{ route('logins.logar') }}">
+                            <a href="{{ route('login.logar') }}">
                             <button type="button" class="btn btn-secondary w-100">
                                 Logar-se
                             </button>
@@ -48,7 +48,7 @@
                         
                     </form>
                 </div>
-            
+            </div>
 
         </div>
     </div>
