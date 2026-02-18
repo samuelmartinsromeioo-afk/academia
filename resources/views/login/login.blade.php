@@ -30,14 +30,6 @@
                     <div class="col-md-4">
                         <input type="text" name="senha" class="form-control" placeholder="Senha" value="{{ old('senha') }}">
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Tipo de Usuário</label>
-                        <select name="tipo_usuario" class="form-select">
-                            <option value="aluno">Aluno</option>
-                            <option value="personal">Personal</option>
-                            <option value="academia">Academia</option>
-                        </select>
-                    </div>
                     <div class="col-md-1 d-grid">
                         <button class="btn btn-primary" type="submit">Logar</button>
                     </div>

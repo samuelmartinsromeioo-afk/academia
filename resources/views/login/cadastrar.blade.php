@@ -24,12 +24,6 @@
             <form action="{{ route('login.create') }}" method="POST" class="mb-4">
                 @csrf
                 <div class="row g-2">
-                    <div class="col-md-4">
-                        <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}">
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" name="senha" class="form-control" placeholder="Senha" value="{{ old('senha') }}">
-                    </div>
                     <div class="mb-3">
                         <label class="form-label">Tipo de Usuário</label>
                         <select name="tipo_usuario" class="form-select">

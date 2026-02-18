@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('email')->unique();
             $table->string('senha');
-            $table->enum('tipo_usuario', ['aluno', 'personal', 'academia']);
             $table->timestamps();
         });
     }

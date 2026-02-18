@@ -11,7 +11,6 @@ class login extends Model
     protected $fillable = [
         'email',
         'senha',
-        'tipo_usuario'
     ];
     use HasFactory;
 }

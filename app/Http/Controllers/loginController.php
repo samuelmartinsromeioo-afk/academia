@@ -33,7 +33,6 @@ class loginController extends Controller
         $validated = $request->validate([
             'email' => 'required|string|max:255',
             'senha' => 'required|string|max:255',
-            'tipo_usuario' => 'required|in:aluno,personal,academia'
         ]);
         /*$login = login::where('email', $validated['email'])->first();
 
