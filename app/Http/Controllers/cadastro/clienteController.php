@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\personal;
+use App\cadastro\Models\cliente;
 use Illuminate\Http\Request;
 
-class personalController extends Controller
+class clienteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class personalController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(personal $personal)
+    public function show(cliente $cliente)
     {
         //
     }
@@ -42,7 +42,7 @@ class personalController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(personal $personal)
+    public function edit(cliente $cliente)
     {
         //
     }
@@ -50,7 +50,7 @@ class personalController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, personal $personal)
+    public function update(Request $request, cliente $cliente)
     {
         //
     }
@@ -58,7 +58,7 @@ class personalController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(personal $personal)
+    public function destroy(cliente $cliente)
     {
         //
     }

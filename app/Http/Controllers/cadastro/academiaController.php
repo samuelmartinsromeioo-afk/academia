@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\academia;
+use App\cadastro\Models\academia;
 use Illuminate\Http\Request;
 
 class academiaController extends Controller

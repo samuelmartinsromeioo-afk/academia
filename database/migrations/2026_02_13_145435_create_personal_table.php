@@ -16,13 +16,13 @@ return new class extends Migration
 
             //dados pessoais
             $table->string('nome');
-            $table->string('email');
+            $table->string('cpf')->unique();
+            $table->string('email')->unique();
+            $table->string('certificado');
             $table->text('resultados');
             $table->text('avaliacao');
-
             // opções do enum
             $table->enum('agenda', ['disponivel', 'ocupado']);
-
             $table->decimal('valor_secao', 5, 2); 
             $table->date('idade'); 
            
