@@ -16,8 +16,10 @@ use App\Models\personal;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//tela inicial
 Route::get('/', [LoginController::class, 'index'])->name('login.index');
+//tela login
+Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 
 
 // 1. Tela com os 3 botões de escolha

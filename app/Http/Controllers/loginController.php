@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\login;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\cadastro\Personal;
+use App\Models\cadastro\Aluno;
+use App\Models\cadastro\academia;
 class loginController extends Controller
 {
     /**
@@ -13,8 +15,8 @@ class loginController extends Controller
      */
     public function index()
     {
-        $login = login::all();
-        return view('login.index', compact('login'));
+        
+        return view('login.index');
     }
 
     /**
@@ -34,15 +36,32 @@ class loginController extends Controller
             'email' => 'required|string|max:255',
             'senha' => 'required|string|max:255',
         ]);
-        /*$login = login::where('email', $validated['email'])->first();
-
-        if (!$login || !Hash::check($validated['senha'], $login->senha)) {
-            return response()->json([
-                'message' => 'Credenciais inválidas'
-            ], 401);
-        }*/
-        login::create($validated);
-        return redirect()->route('login.index');
+        if(!$validated['email'] || !$validated['senha']){
+            return redirect()->route('login.index')->withErrors(['email' => 'Email e senha são obrigatórios.']);
+        }
+        if($personal = Personal::where('email', $validated['email'])->first()){
+            if ($personal && $personal->senha === $validated['senha']) {
+                // Autenticação bem-sucedida para Personal
+                return redirect()->route('personal.dashboard'); // Redireciona para o dashboard do Personal
+            }
+        }
+        if($aluno = Aluno::where('email', $validated['email'])->first()){
+            if ($aluno && $aluno->senha === $validated['senha']) {
+                // Autenticação bem-sucedida para Aluno
+                return redirect()->route('aluno.dashboard'); // Redireciona para o dashboard do Aluno
+            }
+        }
+        if($academia = academia::where('email', $validated['email'])->first()){
+            if ($academia && $academia->senha === $validated['senha']) {
+                // Autenticação bem-sucedida para Academia
+                return redirect()->route('academia.dashboard'); // Redireciona para o dashboard da Academia
+            }
+        }
+        
+       
+        
+        
+        return redirect()->route('login.index')->withErrors(['email' => 'Credenciais inválidas.']);
     }
 
     /**

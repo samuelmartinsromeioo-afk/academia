@@ -46,20 +46,14 @@
         <div class="collapse navbar-collapse" id="menu">
             <ul class="navbar-nav ms-auto gap-2">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('personal.edit') }}">
-                        <i class="bi bi-people-fill me-1"></i>Perfil
+                    <a class="nav-link" href="{{ route('login.index') }}">
+                        <i class="bi bi-people-fill me-1"></i>Login
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('personal.notificar') }}">
-                        <i class="bi bi-car-front me-1"></i>Notificar usuários
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('personal.relatorios') }}">
-                        <i class="bi bi-car-front me-1"></i>Relatórios
+                    <a class="nav-link" href="{{ route('cadastro.tipoCadastro') }}">
+                        <i class="bi bi-car-front me-1"></i>Cadastrar-se
                     </a>
                 </li>
             </ul>
