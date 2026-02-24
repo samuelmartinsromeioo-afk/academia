@@ -20,6 +20,7 @@ use App\Models\personal;
 Route::get('/', [LoginController::class, 'index'])->name('login.index');
 //tela login
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+Route::get('/login',[LoginController::class,'create'])->name('login.create');
 
 
 // 1. Tela com os 3 botões de escolha
