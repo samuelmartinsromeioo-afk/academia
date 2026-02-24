@@ -1,55 +1,35 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>@yield('title', 'RG Power Gym')</title>
+<main class="selecao-container">
+    @yield('conteudo')
+</main>
 
-    <!-- BELEZA DO SITE -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    
-    <style>
-        body {
-            background-color: #f4f6f9;
-        }
+{{-- Estende o layout principal --}}
+@extends('layouts.SelecaoCadastro')
 
-        .navbar-brand {
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .nav-link {
-            font-weight: 500;
-        }
-
-        .nav-link:hover {
-            color: #ffffff !important;
-        }
-
-        .card {
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(218, 10, 10, 0.08);
-        }
-    </style>
-</head>
-
-<div class="selecao-container">
-    <h2>Como você deseja se cadastrar?</h2>
-
-    <div class="cards">
-        <a href="{{ route('cadastro.ir', ['tipo' => 'personal']) }}" class="card">
-            <h3>Sou Personal</h3>
-            <p>Quero gerenciar meus alunos.</p>
-        </a>
-
-        <a href="{{ route('cadastro.ir', ['tipo' => 'cliente']) }}" class="card">
-            <h3>Sou Aluno</h3>
-            <p>Quero treinar e ver minha evolução.</p>
-        </a>
-
-        <a href="{{ route('cadastro.ir', ['tipo' => 'academia']) }}" class="card">
-            <h3>Sou Academia</h3>
-            <p>Quero gerenciar meu estabelecimento.</p>
-        </a>
+@section('conteudo')
+    <div class="header-text">
+        <h2>Cadastro de <span>Personal</span></h2>
+        <p>Preencha os dados abaixo para começar a gerenciar seus alunos.</p>
     </div>
-</div>
+
+    <div class="card" style="width: 100%; max-width: 500px; margin: 0 auto; border-color: var(--primary);">
+        <form action="/salvar-personal" method="POST" style="width: 100%; display: flex; flex-direction: column; gap: 15px;">
+            @csrf
+            
+            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px;">
+                <label>Nome Completo</label>
+                <input type="text" name="nome" placeholder="Ex: João Silva" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #333; background: #0a0b0d; color: white;">
+            </div>
+
+            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px;">
+                <label>CREF (Registro)</label>
+                <input type="text" name="cref" placeholder="000000-G/SP" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #333; background: #0a0b0d; color: white;">
+            </div>
+
+            <button type="submit" style="background: var(--primary); color: black; font-weight: bold; padding: 15px; border: none; border-radius: 8px; cursor: pointer; margin-top: 10px; text-transform: uppercase;">
+                Finalizar Cadastro
+            </button>
+            
+            <a href="{{ route('cadastro.ir', ['tipo' => 'selecao']) }}" style="color: var(--text-dim); text-align: center; text-decoration: none; font-size: 0.9rem;">Voltar</a>
+        </form>
+    </div>
+@endsection
