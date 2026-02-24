@@ -31,7 +31,7 @@
                         <input type="password" name="senha" class="form-control" placeholder="Senha" value="{{ old('senha') }}">
                     </div>
                     <div class="col-md-1 d-grid">
-                        <button class="btn btn-primary" type="submit">Logar</button>
+                        <button class="btn btn-primary" type="submit">Entrar</button>
                     </div>
                 </div>
             </form>
