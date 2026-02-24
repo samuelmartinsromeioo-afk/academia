@@ -28,7 +28,14 @@ class academiaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated=$request->validade([
+        'nome'=>'required|string|max:255',
+        'endereco'=>'required|string|max:255',
+        'valor'=>'required|decimal|max:255',
+        'descricao'=>'required|text|max:255',
+        'infraestrutura'=>'required|text|max:255',
+        'tipos_aulas'=>'required|text|max:255'
+        ]);
     }
 
     /**
