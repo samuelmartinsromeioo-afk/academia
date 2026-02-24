@@ -36,7 +36,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <i class="bi bi-car-front-fill me-2"></i>RG Power Gym
+            <i class="bi bi-people-fill me-2"></i>RG Power Gym
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
@@ -52,8 +52,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('cadastro.tipoCadastro') }}">
-                        <i class="bi bi-car-front me-1"></i>Cadastrar-se
+                    <a class="nav-link" href="{{ route('cadastro.SelecaoCadastro') }}">
+                        <i class="bi bi-people-fill me-1"></i>Cadastrar-se
                     </a>
                 </li>
             </ul>

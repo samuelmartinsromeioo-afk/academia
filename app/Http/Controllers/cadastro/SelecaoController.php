@@ -6,7 +6,8 @@ class SelecaoController extends \App\Http\Controllers\Controller
 {
     public function index()
     {
-        return view('cadastro.escolha'); // Retorna a tela com os botões
+        return view('cadastro.selecionar'); // Retorna a tela com os botões
+       
     }
 
     public function redirecionar($tipo)

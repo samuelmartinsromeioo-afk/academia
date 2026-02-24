@@ -21,14 +21,14 @@
             @endif
 
             {{-- Cadastrar --}}
-            <form action="{{ route('login.edit') }}" method="POST" class="mb-4">
+            <form action="{{ route('login.store') }}" method="POST" class="mb-4">
                 @csrf
                 <div class="row g-2">
                     <div class="col-md-4">
                         <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}">
                     </div>
                     <div class="col-md-4">
-                        <input type="text" name="senha" class="form-control" placeholder="Senha" value="{{ old('senha') }}">
+                        <input type="password" name="senha" class="form-control" placeholder="Senha" value="{{ old('senha') }}">
                     </div>
                     <div class="col-md-1 d-grid">
                         <button class="btn btn-primary" type="submit">Logar</button>
