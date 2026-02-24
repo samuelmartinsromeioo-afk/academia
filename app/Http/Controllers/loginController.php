@@ -16,7 +16,7 @@ class loginController extends Controller
     public function index()
     {
         
-        return view('login.login');
+        return view('login.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class loginController extends Controller
      */
     public function create()
     {
-        return view('login.cadastrar');
+        return view('login.login');
     }
 
     /**
