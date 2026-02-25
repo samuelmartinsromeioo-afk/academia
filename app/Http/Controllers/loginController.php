@@ -6,7 +6,7 @@ use App\Models\login;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\cadastro\Personal;
-use App\Models\cadastro\Aluno;
+use App\Models\cadastro\cliente;
 use App\Models\cadastro\academia;
 class loginController extends Controller
 {

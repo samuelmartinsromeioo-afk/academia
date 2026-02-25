@@ -2,88 +2,198 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>@yield('title', 'RG Power Gym')</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Sistema Fitness</title>
 
-    <!-- BELEZA DO SITE -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
+        :root {
+            --primary: #d4ff00;
+            --bg-dark: #0a0b0d;
+            --card-bg: #16181d;
+            --text-main: #ffffff;
+            --text-dim: #9ca3af;
+            --error: #ff4d4d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #f4f6f9;
+            background-color: var(--bg-dark);
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(212, 255, 0, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(212, 255, 0, 0.05) 0%, transparent 20%);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        .navbar-brand {
-            font-weight: bold;
-            letter-spacing: 1px;
+        header {
+            padding: 2rem;
+            text-align: center;
         }
 
-        .nav-link {
-            font-weight: 500;
+        .logo {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            color: var(--primary);
+            text-transform: uppercase;
         }
 
-        .nav-link:hover {
-            color: #ffffff !important;
+        .login-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
         }
 
-        .card {
+        .login-card {
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 450px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+        }
+
+        .login-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 25px rgba(212,255,0,0.1);
+        }
+
+        .login-card h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .login-card p {
+            color: var(--text-dim);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
             border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(218, 10, 10, 0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            background: #0f1115;
+            color: var(--text-main);
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(212,255,0,0.2);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            background: var(--primary);
+            color: var(--bg-dark);
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212,255,0,0.2);
+        }
+
+        .extra-links {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .extra-links a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .error-message {
+            color: var(--error);
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 30px;
+            }
         }
     </style>
 </head>
-
-
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-            <div class="container">
-                <a class="navbar-brand" href="#">
-                    <i class="bi bi-people-fill me-2"></i>RG Power Gym
-                </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<header>
+    <div class="logo">FIT<span>SYS</span></div>
+</header>
 
-                <div class="collapse navbar-collapse" id="menu">
-                    <ul class="navbar-nav ms-auto gap-2">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login.create') }}">
-                                <i class="bi bi-people-fill me-1"></i>Login
-                             </a>
-                        </li>
+<div class="login-container">
+    <div class="login-card">
+        <h2>Bem-vindo de volta</h2>
+        <p>Acesse sua conta para continuar</p>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cadastro.SelecaoCadastro') }}">
-                                <i class="bi bi-people-fill me-1"></i>Cadastrar-se
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+        <form method="POST" action="{{ route('login.index') }}">
+            @csrf
+
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" name="email" class="form-control" required autofocus>
+                @error('email')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
             </div>
-     </nav>
 
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" name="password" class="form-control" required>
+                @error('password')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
+            </div>
 
-<div class="container my-5">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
+            <button type="submit" class="btn-login">
+                Entrar
+            </button>
 
-            
-
-            {{-- Erros --}}
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <b>Ops:</b>
-                    <ul class="mb-0">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            
-
-        </div>
+            <div class="extra-links">
+                Não tem conta?
+                <a href="{{ route('cadastro.SelecaoCadastro') }}">Cadastre-se</a>
+            </div>
+        </form>
     </div>
 </div>
+
+</body>
+</html>
