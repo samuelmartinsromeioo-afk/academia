@@ -29,7 +29,15 @@ class clienteController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            
+        'nome',
+        'email',
+        'senha',
+        'altura',
+        'peso',
+        'idade',
+        'frequencia_semanal',
+        'resumo_objetivo',
+        'condicao_clinica'
         ]);
     }
 
