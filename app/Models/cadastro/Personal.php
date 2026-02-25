@@ -16,6 +16,7 @@ class Personal extends Model
         'nome',
         'cpf',
         'email',
+        'senha',
         'certificado',
         'resultados',
         'avaliacao',

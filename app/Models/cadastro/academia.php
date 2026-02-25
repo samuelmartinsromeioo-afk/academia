@@ -12,6 +12,8 @@ class academia extends Model
 
     protected $fillable = [
         'nome',
+        'email',
+        'senha',
         'endereco',
         'valor',
         'descricao',
