@@ -164,7 +164,7 @@
         <h2>Bem-vindo de volta</h2>
         <p>Acesse sua conta para continuar</p>
 
-        <form method="POST" action="{{ route('login.index') }}">
+        <form method="POST" action="{{ route('login.store') }}">
             @csrf
 
             <div class="form-group">

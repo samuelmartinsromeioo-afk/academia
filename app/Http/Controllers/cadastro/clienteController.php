@@ -12,7 +12,7 @@ class clienteController extends Controller
      */
     public function index()
     {
-        //
+        return view('cadastros.cliente');
     }
 
     /**
@@ -28,7 +28,9 @@ class clienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            
+        ]);
     }
 
     /**
