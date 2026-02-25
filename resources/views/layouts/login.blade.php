@@ -46,7 +46,7 @@
         <div class="collapse navbar-collapse" id="menu">
             <ul class="navbar-nav ms-auto gap-2">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login.index') }}">
+                    <a class="nav-link" href="{{ route('login.create') }}">
                         <i class="bi bi-people-fill me-1"></i>Login
                     </a>
                 </li>
