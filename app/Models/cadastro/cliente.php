@@ -14,6 +14,7 @@ class cliente extends Model
         'altura',
         'peso',
         'idade',
+        'sexo',
         'frequencia_semanal',
         'resumo_objetivo',
         'condicao_clinica'
