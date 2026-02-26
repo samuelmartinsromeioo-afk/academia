@@ -29,17 +29,24 @@ class clienteController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-        'nome'=> 'required|string|max:255',
-        'email'=> 'required|string|max:255',
-        'senha'=>'required|string|max:255',
-        'altura'=>'required|decimal',
-        'peso'=>'required|decimal',
-        'idade'=>'requered|date',
-        'sexo'=>'requered|enum',
-        'frequencia_semanal'=>'required|integer',
-        'resumo_objetivo'=>'required|text|max:255',
-        'condicao_clinica'=>'required|text|max:255'
+            'nome' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:clientes,email',
+            'senha' => 'required|string|min:6|max:255',
+            'altura' => 'required|numeric|min:0',
+            'peso' => 'required|numeric|min:0',
+            'idade' => 'required|date',
+            'sexo' => 'required|in:Masculino,Feminino',
+            'frequencia_semanal' => 'required|integer|min:0|max:7',
+            'resumo_objetivo' => 'required|string|max:255',
+            'condicao_clinica' => 'nullable|string|max:255'
         ]);
+
+        // Criptografar senha
+        $validated['senha'] = Hash::make($validated['senha']);
+
+        cliente::create($validated);
+
+        return redirect()->back()->with('success', 'Cliente cadastrado com sucesso!');
     }
 
     /**
