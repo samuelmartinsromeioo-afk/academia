@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('cliente', function (Blueprint $table) {
             // Dados Pessoais 
             $table->string('nome');
+            $table->string('senha');
             $table->string('email')->unique();
             $table->decimal('altura', 3, 2); 
             $table->decimal('peso', 5, 2);   
             $table->date('idade'); 
-            
+            $table->enum('sexo',['masculino','feminino'])->default();
             // Frequência e Objetivos
             $table->integer('frequencia_semanal');
             $table->text('resumo_objetivo');

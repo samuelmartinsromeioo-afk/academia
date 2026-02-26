@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('academia', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->string('email')->unique();
+            $table->string('senha');
             $table->string('endereco');
             $table->decimal('valor', 10, 2); // Ex: 1500.50
             $table->text('descricao');
