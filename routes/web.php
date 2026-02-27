@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\cadastro\SelecaoController;
 use App\Http\Controllers\cadastro\PersonalController;
+use App\Http\Controllers\cadastro\clienteController;
 use App\Models\personal;
 
 /*
@@ -29,11 +30,15 @@ Route::get('/cadastro/selecionar', [SelecaoController::class, 'index'])->name('c
 Route::get('/cadastro/ir-para/{tipo}', [SelecaoController::class, 'redirecionar'])->name('cadastro.ir');
 // 3. As rotas dos formulários específicos (exemplos)
 Route::get('/cadastro/personal', function() { return view('cadastros.personal'); })->name('form.personal');
-Route::get('/cadastro/aluno', function() { return view('cadastros.aluno'); })->name('form.cliente');
+Route::get('/cadastro/aluno', function() { return view('cadastros.cliente'); })->name('form.cliente');
 Route::get('/cadastro/academia', function() { return view('cadastros.academia'); })->name('form.academia');
 
 
 // Rota para mostrar o formulário
-Route::get('/cadastro/personal', [PersonalController::class, 'create'])->name('personal.create');
+Route::get('/cadastro/personal', [PersonalController::class, 'create'])->name('form.personal');
 // Rota para processar o formulário
 Route::post('/cadastro/personal', [PersonalController::class, 'store'])->name('personal.store');
+// Exibir formulário
+Route::get('/cadastro/cliente', [clienteController::class, 'create'])->name('form.cliente');
+// Salvar cliente
+Route::post('/cadastro/cliente', [clienteController::class, 'store'])->name('cliente.store');

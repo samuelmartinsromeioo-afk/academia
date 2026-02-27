@@ -15,7 +15,7 @@ class PersonalController extends Controller
     public function create()
     {
         // Certifique-se que a view está em resources/views/cadastros/personal.blade.php
-        return view('cadastros.personal');
+        return view('cadastro.personal');
     }
 
     // Salva os dados no banco

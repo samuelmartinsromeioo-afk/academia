@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Cadastro;
 
-use App\cadastro\Models\cliente;
+use App\Http\Controllers\Controller;
+use App\Models\cadastro\cliente;
 use Illuminate\Http\Request;
 
 class clienteController extends Controller
@@ -12,7 +13,7 @@ class clienteController extends Controller
      */
     public function index()
     {
-        return view('cadastros.cliente');
+        return view('cadastro.cliente');
     }
 
     /**
@@ -20,7 +21,7 @@ class clienteController extends Controller
      */
     public function create()
     {
-        //
+        return view('cadastro.cliente'); // ajuste para o nome da sua view
     }
 
     /**
