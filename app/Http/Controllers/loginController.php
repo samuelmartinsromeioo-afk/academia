@@ -24,7 +24,7 @@ class loginController extends Controller
      */
     public function create()
     {
-        return view('login.login');
+        return view('login.index');
     }
 
     /**
