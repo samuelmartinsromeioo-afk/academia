@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\cadastro\Models\academia as ModelsAcademia;
-use App\cadastro\Models\cliente as ModelsCliente;
-use App\cadastro\Models\Personal as ModelsPersonal;
+use App\Models\cadastro\academia as ModelsAcademia;
+use App\Models\cadastro\Cliente as ModelsCliente;
+use App\Models\cadastro\Personal as ModelsPersonal;
 use App\Models\login;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -48,7 +48,7 @@ class loginController extends Controller
         if($aluno = ModelsCliente::where('email', $validated['email'])->first()){
             if ($aluno && $aluno->senha === $validated['senha']) {
                 // Autenticação bem-sucedida para Aluno
-                return redirect()->route('aluno.dashboard'); // Redireciona para o dashboard do Aluno
+                return redirect()->route('aluno.dashboard')->withErrors(['email' => 'Bem vindo.']); // Redireciona para o dashboard do Aluno
             }
         }
         if($academia = ModelsAcademia::where('email', $validated['email'])->first()){

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\cadastro\Models;
+namespace App\Models\cadastro;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

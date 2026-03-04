@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('altura', 3, 2); 
             $table->decimal('peso', 5, 2);   
             $table->date('idade'); 
-            $table->enum('sexo',['masculino','feminino'])->default('masculino');
+            $table->enum('sexo',['masculino','feminino','outro'])->default('masculino');
             // Frequência e Objetivos
             $table->integer('frequencia_semanal');
             $table->text('resumo_objetivo');

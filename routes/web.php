@@ -28,7 +28,7 @@ Route::get('/login',[LoginController::class,'create'])->name('login.create');
 // 1. Tela com os 3 botões de escolha
 Route::get('/cadastro/selecionar', [SelecaoController::class, 'index'])->name('cadastro.SelecaoCadastro');
 // 2. Rota que processa a escolha e redireciona
-Route::get('/cadastro/{tipo}', [SelecaoController::class, 'redirecionar'])->name('cadastro.ir');
+Route::get('/cadastro/ir-cadastro/{tipo}', [SelecaoController::class, 'redirecionar'])->name('cadastro.ir');
 
 // 3. As rotas dos formulários específicos 
 

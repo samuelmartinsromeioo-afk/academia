@@ -7,14 +7,14 @@ use App\Models\cadastro\Cliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class clienteController extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('cadastro.cliente');
+        
     }
 
     /**
@@ -37,7 +37,7 @@ class clienteController extends Controller
             'altura' => 'required|numeric|min:0',
             'peso' => 'required|numeric|min:0',
             'idade' => 'required|date',
-            'sexo' => 'required|in:Masculino,Feminino',
+            'sexo' => 'required|in:Masculino,Feminino,Outro',
             'frequencia_semanal' => 'required|integer|min:0|max:7',
             'resumo_objetivo' => 'required|string|max:255',
             'condicao_clinica' => 'nullable|string|max:255'
@@ -48,7 +48,8 @@ class clienteController extends Controller
 
         Cliente::create($validated);
 
-        return redirect()->back()->with('success', 'Cliente cadastrado com sucesso!')->route('login.index');
+        return redirect()->route('login.index')
+       ->with('success', 'Cliente cadastrado com sucesso!');
     }
 
     /**
