@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\cadastro\Models\academia as ModelsAcademia;
+use App\cadastro\Models\cliente as ModelsCliente;
+use App\cadastro\Models\Personal as ModelsPersonal;
 use App\Models\login;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\cadastro\Personal;
-use App\Models\cadastro\cliente;
-use App\Models\cadastro\academia;
 class loginController extends Controller
 {
     /**
@@ -39,19 +39,19 @@ class loginController extends Controller
         if(!$validated['email'] || !$validated['senha']){
             return redirect()->route('login.index')->withErrors(['email' => 'Email e senha são obrigatórios.']);
         }
-        if($personal = Personal::where('email', $validated['email'])->first()){
+        if($personal = ModelsPersonal::where('email', $validated['email'])->first()){
             if ($personal && $personal->senha === $validated['senha']) {
                 // Autenticação bem-sucedida para Personal
                 return redirect()->route('personal.dashboard'); // Redireciona para o dashboard do Personal
             }
         }
-        if($aluno = Aluno::where('email', $validated['email'])->first()){
+        if($aluno = ModelsCliente::where('email', $validated['email'])->first()){
             if ($aluno && $aluno->senha === $validated['senha']) {
                 // Autenticação bem-sucedida para Aluno
                 return redirect()->route('aluno.dashboard'); // Redireciona para o dashboard do Aluno
             }
         }
-        if($academia = academia::where('email', $validated['email'])->first()){
+        if($academia = ModelsAcademia::where('email', $validated['email'])->first()){
             if ($academia && $academia->senha === $validated['senha']) {
                 // Autenticação bem-sucedida para Academia
                 return redirect()->route('academia.dashboard'); // Redireciona para o dashboard da Academia

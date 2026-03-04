@@ -1,20 +1,26 @@
 <?php
 
-namespace App\cadastro\Models;
+namespace App\Models\cadastro;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Personal extends Model
 {
-    // Informamos que a tabela não segue o padrão plural (personals)
-    protected $table = 'personal';
+    
+    protected $table = 'personals';
 
-    // Desativamos timestamps caso sua migration não tenha $table->timestamps()
     public $timestamps = false;
 
     protected $fillable = [
         'nome',
         'cpf',
+        'cep',
+        'rua',
+        'bairro',
+        'cidade',
+        'estado',
+        'complemento',
+        'senha',
         'email',
         'certificado',
         'resultados',
