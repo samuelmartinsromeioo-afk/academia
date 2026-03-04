@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Cadastro;
 
 use App\Http\Controllers\Controller;
-use App\Models\cadastro\cliente;
+use App\Models\cadastro\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class clienteController extends Controller
 {
@@ -45,15 +46,15 @@ class clienteController extends Controller
         // Criptografar senha
         $validated['senha'] = Hash::make($validated['senha']);
 
-        cliente::create($validated);
+        Cliente::create($validated);
 
-        return redirect()->back()->with('success', 'Cliente cadastrado com sucesso!');
+        return redirect()->back()->with('success', 'Cliente cadastrado com sucesso!')->route('login.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(cliente $cliente)
+    public function show(Cliente $cliente)
     {
         //
     }
@@ -61,7 +62,7 @@ class clienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(cliente $cliente)
+    public function edit(Cliente $cliente)
     {
         //
     }
@@ -69,7 +70,7 @@ class clienteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, cliente $cliente)
+    public function update(Request $request, Cliente $cliente)
     {
         //
     }
@@ -77,7 +78,7 @@ class clienteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(cliente $cliente)
+    public function destroy(Cliente $cliente)
     {
         //
     }

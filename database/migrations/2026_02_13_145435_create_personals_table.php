@@ -11,17 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('academia', function (Blueprint $table) {
+        Schema::create('personals', function (Blueprint $table) {
             $table->id();
+
+            //dados pessoais
             $table->string('nome');
+            $table->string('cpf')->unique();
             $table->string('email')->unique();
             $table->string('senha');
-            $table->string('endereco');
-            $table->decimal('valor', 10, 2); // Ex: 1500.50
-            $table->text('descricao');
-            $table->text('infraestrutura');
-            $table->text('tipos_aulas');
-           
+            $table->string('certificado');
+            $table->text('resultados');
+            $table->text('avaliacao');
+            // opções do enum
+            $table->enum('agenda', ['disponivel', 'ocupado']);
+            $table->decimal('valor_secao', 5, 2); 
+            $table->date('idade'); 
             $table->timestamps();
         });
     }
@@ -31,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('academia');
+        Schema::dropIfExists('personals');
     }
 };

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Personal extends Model
 {
     // Informamos que a tabela não segue o padrão plural (personals)
-    protected $table = 'personal';
+    protected $table = 'personals';
 
     // Desativamos timestamps caso sua migration não tenha $table->timestamps()
     public $timestamps = false;
