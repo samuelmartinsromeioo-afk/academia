@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers\cadastro;
 
-<<<<<<< HEAD
-use App\cadastro\Models\Cliente;
-=======
 use App\Http\Controllers\Controller;
 use App\Models\cadastro\Cliente;
->>>>>>> 6330619cb9d55d0e6ec6701728ab6e60e0745d92
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -24,14 +20,9 @@ class clienteController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-  public function create()
+    public function create()
     {
-<<<<<<< HEAD
-        // Certifique-se que a view está em resources/views/cadastros/personal.blade.php
-        return view('cadastro.academia');
-=======
         return view('cadastro.cliente'); // ajuste para o nome da sua view
->>>>>>> 6330619cb9d55d0e6ec6701728ab6e60e0745d92
     }
 
     /**
