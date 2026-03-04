@@ -1,21 +1,29 @@
 <?php
 
-namespace App\cadastro\Models;
+namespace App\Models\cadastro;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class academia extends Model
+class Academia extends Model
 {
-    protected $table ='academia';
+    // O nome da tabela deve bater com o banco
+    protected $table = 'academias';
+
 
     protected $fillable = [
         'nome',
-        'endereco',
-        'valor',
+        'cep',
+        'rua',
+        'bairro',
+        'cidade',
+        'estado',
+        'complemento',
+        'valor_mensalidade',
         'descricao',
-        'infraestrutura',
+        'senha',
+        'cnpj',
         'tipos_aulas'
                             ];
 
@@ -26,7 +34,7 @@ class academia extends Model
     ];
     public function cliente(): HasMany
     {
-        return $this->hasMany(cliente::class);
+        return $this->hasMany(Academia::class);
     }
    
     use HasFactory;

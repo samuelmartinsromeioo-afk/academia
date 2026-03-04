@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\cadastro\Models\academia;
+namespace App\Http\Controllers\Cadastro;
+use App\Http\Controllers\Controller; 
+use App\Models\cadastro\Academia;
 use Illuminate\Http\Request;
 
-class academiaController extends Controller
+class AcademiaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,24 +18,40 @@ class academiaController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    
+  public function create()
     {
-        //
+        // Certifique-se que a view está em resources/views/cadastros/personal.blade.php
+        return view('cadastro.academia');
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $validated=$request->validade([
+        $dados=$request->validate([
         'nome'=>'required|string|max:255',
+        'cep'=>'required|string|max:8',
+        'rua'=>'required|string|max:300',
+        'bairro'=>'required|string|max:200',
+        'cidade'=>'required|string|max:200',
+        'estado'=>'required|string|max:200',
+        'complemento'=>'required|string|min:1',
         'endereco'=>'required|string|max:255',
-        'valor'=>'required|decimal|max:255',
-        'descricao'=>'required|text|max:255',
-        'infraestrutura'=>'required|text|max:255',
-        'tipos_aulas'=>'required|text|max:255'
+        'valor_mensalidade'=>'required|numeric|min:0',
+        'descricao'=>'nullable|string|max:255',
+        'senha'=>'required|string|min:8|confirmed',
+        'cnpj'=>'required|string|unique:academias,cnpj|max:18',
+        'infraestrutura'=>'required|string|max:255',
+        'tipos_aulas'=>'required|string|max:255'
         ]);
+        
+        $dados['senha'] = bcrypt($dados['senha']);
+        Academia::create($dados);
+        return redirect()->route('form.academia')->with('sucesso', 'Personal cadastrado com sucesso!');
+        return redirect()->route('cadastro.SelecaoCadastro');
     }
 
     /**

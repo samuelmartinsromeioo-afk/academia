@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\cadastro\Models\cliente;
+use App\cadastro\Models\Cliente;
 use Illuminate\Http\Request;
 
 class clienteController extends Controller
@@ -18,9 +18,10 @@ class clienteController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+  public function create()
     {
-        //
+        // Certifique-se que a view está em resources/views/cadastros/personal.blade.php
+        return view('cadastro.academia');
     }
 
     /**
