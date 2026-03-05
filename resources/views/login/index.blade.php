@@ -177,7 +177,7 @@
 
             <div class="form-group">
                 <label for="password">Senha</label>
-                <input type="password" name="password" class="form-control" required>
+                <input type="password" name="senha" class="form-control" required>
                 @error('password')
                     <div class="error-message">{{ $message }}</div>
                 @enderror
