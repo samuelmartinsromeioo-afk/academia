@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Personal extends Model
 {
-    
+
+
     protected $table = 'personals';
+
 
     public $timestamps = false;
 
@@ -22,6 +24,7 @@ class Personal extends Model
         'complemento',
         'senha',
         'email',
+        'senha',
         'certificado',
         'resultados',
         'avaliacao',

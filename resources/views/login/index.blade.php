@@ -164,7 +164,7 @@
         <h2>Bem-vindo de volta</h2>
         <p>Acesse sua conta para continuar</p>
 
-        <form method="POST" action="{{ route('login.index') }}">
+        <form method="POST" action="{{ route('login.store') }}">
             @csrf
 
             <div class="form-group">
@@ -177,7 +177,7 @@
 
             <div class="form-group">
                 <label for="password">Senha</label>
-                <input type="password" name="password" class="form-control" required>
+                <input type="password" name="senha" class="form-control" required>
                 @error('password')
                     <div class="error-message">{{ $message }}</div>
                 @enderror

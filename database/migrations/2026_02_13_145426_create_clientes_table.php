@@ -11,18 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cliente', function (Blueprint $table) {
+
+        Schema::create('clientes', function (Blueprint $table) {
             // Dados Pessoais 
             $table->string('nome');
+            $table->string('senha');
+
             $table->string('email')->unique();
             $table->decimal('altura', 3, 2); 
             $table->decimal('peso', 5, 2);   
             $table->date('idade'); 
-            
+            $table->enum('sexo',['masculino','feminino','outro'])->default('masculino');
             // Frequência e Objetivos
             $table->integer('frequencia_semanal');
             $table->text('resumo_objetivo');
             $table->text('condicao_clinica');
+            $table->timestamps();
 
         });
     }
@@ -32,6 +36,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cliente');
+
+        Schema::dropIfExists('clientes');
+
     }
 };

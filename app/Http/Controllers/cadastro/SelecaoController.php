@@ -15,7 +15,7 @@ class SelecaoController extends \App\Http\Controllers\Controller
         // Lógica para decidir qual view abrir baseado no clique
         return match ($tipo) {
             'personal' => redirect()->route('form.personal'),
-            'aluno'    => redirect()->route('form.cliente'),
+            'cliente'    => redirect()->route('form.cliente'),
             'academia' => redirect()->route('form.academia'),
             default    => abort(404),
         };

@@ -6,8 +6,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Cadastro\SelecaoController;
 use App\Http\Controllers\Cadastro\PersonalController;
 use App\Http\Controllers\Cadastro\AcademiaController;
-use App\Http\Controllers\ClienteController;
-use App\Models\personal;
+use App\Http\Controllers\Cadastro\ClienteController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,12 +29,16 @@ Route::get('/login',[LoginController::class,'create'])->name('login.create');
 // 1. Tela com os 3 botões de escolha
 Route::get('/cadastro/selecionar', [SelecaoController::class, 'index'])->name('cadastro.SelecaoCadastro');
 // 2. Rota que processa a escolha e redireciona
-Route::get('/cadastro/ir-para/{tipo}', [SelecaoController::class, 'redirecionar'])->name('cadastro.ir');
+
+Route::get('/cadastro/ir-cadastro/{tipo}', [SelecaoController::class, 'redirecionar'])->name('cadastro.ir');
+
 
 // 3. As rotas dos formulários específicos 
 
 
-Route::get('/cadastro/cliente', [clienteController::class, 'create'])->name('form.cliente');
+
+Route::get('/cadastro/cliente', [ClienteController::class, 'create'])->name('form.cliente');
+Route::post('/cadastro/cliente', [ClienteController::class, 'store'])->name('cliente.store');
 
 Route::get('/cadastro/personal', [PersonalController::class, 'create'])->name('form.personal');
 Route::post('/cadastro/personal', [PersonalController::class, 'store'])->name('personal.store');
@@ -42,5 +46,6 @@ Route::post('/cadastro/personal', [PersonalController::class, 'store'])->name('p
 
 Route::get('/cadastro/academia', [AcademiaController::class, 'create'])->name('form.academia');
 Route::post('/cadastro/academia', [AcademiaController::class, 'store'])->name('academia.store');
+
 
 

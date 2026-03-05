@@ -11,7 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('academia', function (Blueprint $table) {
+
+        Schema::create('academias', function (Blueprint $table) {
+
             $table->id();
             $table->string('nome');
             $table->string('cep');
@@ -21,8 +23,11 @@ return new class extends Migration
             $table->string('estado');
             $table->string('complemento');
             $table->decimal('valor_mensalidade', 10, 2); // Ex: 1500.50
-            $table->text('descricao');
+
+            $table->string('email')->unique();
             $table->string('senha');
+            $table->string('endereco');
+            $table->text('descricao');
             $table->string('cnpj');
             $table->text('tipos_aulas');
            
@@ -35,6 +40,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('academia');
+        Schema::dropIfExists('academias');
+
     }
 };

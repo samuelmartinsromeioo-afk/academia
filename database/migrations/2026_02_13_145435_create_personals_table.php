@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('cidade');
             $table->string('estado');
             $table->string('complemento');
+            $table->string('senha');
             $table->string('certificado');
             $table->text('resultados');
             $table->text('avaliacao');
@@ -31,7 +32,8 @@ return new class extends Migration
             $table->enum('agenda', ['disponivel', 'ocupado']);
             $table->decimal('valor_secao', 5, 2); 
             $table->date('idade'); 
-           
+            $table->timestamps();
+
         });
     }
 
@@ -40,6 +42,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('personal');
+        Schema::dropIfExists('personals');
+
     }
 };

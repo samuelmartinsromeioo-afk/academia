@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Academia extends Model
 {
+
     // O nome da tabela deve bater com o banco
     protected $table = 'academias';
 
