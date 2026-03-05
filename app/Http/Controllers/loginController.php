@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\cadastro\academia as ModelsAcademia;
 use App\Models\cadastro\Cliente as ModelsCliente;
 use App\Models\cadastro\Personal as ModelsPersonal;
@@ -9,6 +10,7 @@ use App\Models\login;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+
 
 class loginController extends Controller
 {
@@ -43,6 +45,7 @@ class loginController extends Controller
         if (Hash::check($validated['senha'], $personal->senha)) {
             return redirect()->route('personal.dashboard');
         }
+
     }
 
     // CLIENTE
@@ -56,6 +59,7 @@ class loginController extends Controller
     if ($academia = ModelsAcademia::where('email', $validated['email'])->first()) {
         if (Hash::check($validated['senha'], $academia->senha)) {
             return redirect()->route('academia.dashboard');
+
         }
     }
 

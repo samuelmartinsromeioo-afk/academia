@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\cadastro;
 
+
 use App\Http\Controllers\Controller;
 use App\Models\cadastro\Cliente;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,9 +22,11 @@ class ClienteController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+  public function create()
     {
+
         return view('cadastro.cliente'); // ajuste para o nome da sua view
+     
     }
 
     /**

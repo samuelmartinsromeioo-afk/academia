@@ -9,12 +9,19 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Academia extends Model
 {
 
+    // O nome da tabela deve bater com o banco
+    protected $table = 'academias';
+
+
     protected $fillable = [
         'nome',
-        'email',
-        'senha',
-        'endereco',
-        'valor',
+        'cep',
+        'rua',
+        'bairro',
+        'cidade',
+        'estado',
+        'complemento',
+        'valor_mensalidade',
         'descricao',
         'senha',
         'cnpj',

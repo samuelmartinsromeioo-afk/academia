@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
+
         Schema::create('clientes', function (Blueprint $table) {
             // Dados Pessoais 
             $table->string('nome');
             $table->string('senha');
+
             $table->string('email')->unique();
             $table->decimal('altura', 3, 2); 
             $table->decimal('peso', 5, 2);   
@@ -25,6 +27,7 @@ return new class extends Migration
             $table->text('resumo_objetivo');
             $table->text('condicao_clinica');
             $table->timestamps();
+
         });
     }
 
@@ -33,6 +36,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+
         Schema::dropIfExists('clientes');
+
     }
 };

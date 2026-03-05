@@ -33,6 +33,7 @@ return new class extends Migration
             $table->decimal('valor_secao', 5, 2); 
             $table->date('idade'); 
             $table->timestamps();
+
         });
     }
 
@@ -42,5 +43,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('personals');
+
     }
 };
