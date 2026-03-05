@@ -51,7 +51,7 @@ class loginController extends Controller
     // CLIENTE
     if ($aluno = ModelsCliente::where('email', $validated['email'])->first()) {
         if (Hash::check($validated['senha'], $aluno->senha)) {
-            return redirect()->route('aluno.dashboard');
+            return redirect()->route('cliente.index');
         }
     }
 
