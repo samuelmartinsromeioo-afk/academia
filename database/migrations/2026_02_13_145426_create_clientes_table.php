@@ -16,8 +16,13 @@ return new class extends Migration
             // Dados Pessoais 
             $table->string('nome');
             $table->string('senha');
-
             $table->string('email')->unique();
+            $table->string('cep');
+            $table->string('rua');
+            $table->string('bairro');
+            $table->string('cidade');
+            $table->string('estado');
+            $table->string('complemento');
             $table->decimal('altura', 3, 2); 
             $table->decimal('peso', 5, 2);   
             $table->date('idade'); 
