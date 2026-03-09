@@ -47,5 +47,5 @@ Route::post('/cadastro/personal', [PersonalController::class, 'store'])->name('p
 Route::get('/cadastro/academia', [AcademiaController::class, 'create'])->name('form.academia');
 Route::post('/cadastro/academia', [AcademiaController::class, 'store'])->name('academia.store');
 
-Route::get('/cadastro/cliente', [ClienteController::class, 'index'])->name('cliente.index');
+//Route::get('/cadastro/cliente', [ClienteController::class, 'index'])->name('cliente.index');
 
