@@ -16,7 +16,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        return view('cliente.index');
+        //return view('cliente.index');
     }
 
     /**
@@ -38,7 +38,7 @@ class ClienteController extends Controller
             'nome' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:clientes,email',
             'senha' => 'required|string|min:6|max:255',
-            'cep'=>'required|string|max:8',
+            'cep'=>'required|string|max:9',
             'rua'=>'required|string|max:300',
             'bairro'=>'required|string|max:200',
             'cidade'=>'required|string|max:200',

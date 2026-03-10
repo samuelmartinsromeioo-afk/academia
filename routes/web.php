@@ -7,6 +7,7 @@ use App\Http\Controllers\Cadastro\SelecaoController;
 use App\Http\Controllers\Cadastro\PersonalController;
 use App\Http\Controllers\Cadastro\AcademiaController;
 use App\Http\Controllers\Cadastro\ClienteController;
+use App\Http\Controllers\App\AlunoController;
 
 
 /*
@@ -47,5 +48,6 @@ Route::post('/cadastro/personal', [PersonalController::class, 'store'])->name('p
 Route::get('/cadastro/academia', [AcademiaController::class, 'create'])->name('form.academia');
 Route::post('/cadastro/academia', [AcademiaController::class, 'store'])->name('academia.store');
 
-//Route::get('/cadastro/cliente', [ClienteController::class, 'index'])->name('cliente.index');
+Route::get('/cliente', [AlunoController::class, 'index'])->name('cliente.index');
+Route::post('/cliente/buscar', [AlunoController::class, 'buscarProximos'])->name('cliente.buscar');
 

@@ -148,8 +148,17 @@
 
     <div class="auth-card">
         <form action="{{ route('cliente.store') }}" method="POST" class="form-grid">
+                @if ($errors->any())
+                    <div style="background: rgba(255,0,0,0.2); border: 1px solid #ff4444; color: #fff; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                        <strong>Erro ao cadastrar:</strong>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             @csrf
-
             <div class="section-title">Informações Pessoais</div>
 
             <div class="form-group full-width">
@@ -173,6 +182,27 @@
                 <div class="input-wrapper">
                     <i class="fa-solid fa-lock"></i>
                     <input type="password" name="senha" required placeholder="••••••••">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Data de Nascimento</label>
+                <div class="input-wrapper">
+                    <i class="fa-regular fa-calendar"></i>
+                    <input type="date" name="idade" value="{{ old('idade') }}" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Sexo</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-venus-mars"></i>
+                    <select name="sexo" required>
+                        <option value="">Selecione</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Prefiro não informar">Outro</option>
+                    </select>
                 </div>
             </div>
 
@@ -209,6 +239,14 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <label>Número / Complemento</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-house"></i>
+                    <input type="text" name="complemento" placeholder="Ex: 120 ou Ap 12">
+                </div>
+            </div>
+
             <div class="section-title">Perfil Físico & Objetivo</div>
 
             <div class="form-group">
@@ -231,6 +269,14 @@
                 <label>Resumo do Objetivo</label>
                 <div class="input-wrapper">
                     <textarea name="resumo_objetivo" rows="2" placeholder="Ex: Ganho de massa muscular e melhora no condicionamento.">{{ old('resumo_objetivo') }}</textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Frequência Semanal</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-dumbbell"></i>
+                    <input type="number" name="frequencia_semanal" value="{{ old('frequencia_semanal') }}" required>
                 </div>
             </div>
 
