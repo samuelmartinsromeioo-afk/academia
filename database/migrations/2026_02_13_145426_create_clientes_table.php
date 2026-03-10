@@ -13,6 +13,7 @@ return new class extends Migration
     {
 
         Schema::create('clientes', function (Blueprint $table) {
+            $table->id();
             // Dados Pessoais 
             $table->string('nome');
             $table->string('senha');
@@ -31,6 +32,9 @@ return new class extends Migration
             $table->integer('frequencia_semanal');
             $table->text('resumo_objetivo');
             $table->text('condicao_clinica');
+            // 📍 localização para cálculo de distância
+            $table->decimal('latitude', 10, 7)->nullable();
+            $table->decimal('longitude', 10, 7)->nullable();
             $table->timestamps();
 
         });

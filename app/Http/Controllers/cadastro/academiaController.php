@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Cadastro;
 use App\Http\Controllers\Controller; 
 use App\Models\cadastro\Academia;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Http;
 class AcademiaController extends Controller
 {
     /**
@@ -49,6 +49,14 @@ class AcademiaController extends Controller
         ]);
         
         $dados['senha'] = bcrypt($dados['senha']);
+        // 🔎 buscar coordenadas
+        $coords = $this->buscarCoordenadas($dados['cep']);
+
+        if ($coords) {
+            $dados['latitude'] = $coords['latitude'];
+            $dados['longitude'] = $coords['longitude'];
+        }
+
         Academia::create($dados);
         return redirect()->route('form.academia')->with('sucesso', 'Personal cadastrado com sucesso!');
         return redirect()->route('cadastro.SelecaoCadastro');
