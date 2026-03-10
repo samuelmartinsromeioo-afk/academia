@@ -26,7 +26,9 @@ class Cliente extends Model
         'sexo',
         'frequencia_semanal',
         'resumo_objetivo',
-        'condicao_clinica'
+        'condicao_clinica',
+        'latitude',
+        'longitude'
         ];
     use HasFactory;
 }

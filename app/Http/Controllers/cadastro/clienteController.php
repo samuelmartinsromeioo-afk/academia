@@ -5,7 +5,7 @@ namespace App\Http\Controllers\cadastro;
 
 use App\Http\Controllers\Controller;
 use App\Models\cadastro\Cliente;
-
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -55,6 +55,15 @@ class ClienteController extends Controller
 
         // Criptografar senha
         $validated['senha'] = Hash::make($validated['senha']);
+
+        // 🔎 buscar coordenadas
+        $coords = $this->buscarCoordenadas($validated['cep']);
+
+        if ($coords) {
+            $validated['latitude'] = $coords['latitude'];
+            $validated['longitude'] = $coords['longitude'];
+        }
+
 
         Cliente::create($validated);
 

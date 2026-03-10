@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Cadastro;
 use App\Http\Controllers\Controller; 
 use Illuminate\Http\Request;
 use App\Models\cadastro\Personal; 
-
+use Illuminate\Support\Facades\Http;
 class PersonalController extends Controller
 {
     // Exibe o formulário de cadastro específico
@@ -49,6 +49,13 @@ class PersonalController extends Controller
         $dados['avaliacao'] = 'Aguardando avaliação inicial'; // Define o texto padrão
         $dados['resultados'] = 'Nenhum resultado registrado'; // Define o texto padrão
         $dados['agenda'] = 'disponivel'; // Valor para o ENUM da sua migration
+        // 🔎 buscar coordenadas
+        $coords = $this->buscarCoordenadas($dados['cep']);
+
+        if ($coords) {
+            $dados['latitude'] = $coords['latitude'];
+            $dados['longitude'] = $coords['longitude'];
+        }
 
         Personal::create($dados);
         return redirect()->route('login.index')->with('sucesso', 'Personal cadastrado com sucesso!');

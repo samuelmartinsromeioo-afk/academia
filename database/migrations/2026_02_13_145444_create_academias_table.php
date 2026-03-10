@@ -30,7 +30,9 @@ return new class extends Migration
             $table->text('descricao');
             $table->string('cnpj');
             $table->text('tipos_aulas');
-           
+            // 📍 localização para cálculo de distância
+            $table->decimal('latitude', 10, 7)->nullable();
+            $table->decimal('longitude', 10, 7)->nullable();
             $table->timestamps();
         });
     }

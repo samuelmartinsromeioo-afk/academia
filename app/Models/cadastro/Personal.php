@@ -30,6 +30,8 @@ class Personal extends Model
         'avaliacao',
         'agenda',
         'valor_secao',
-        'idade'
+        'idade',
+        'latitude',
+        'longitude'
     ];
 }
