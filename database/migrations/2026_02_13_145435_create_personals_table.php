@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('complemento');
             $table->string('senha');
             $table->string('certificado');
-            $table->text('resultados');
+           $table->text('resultados')->nullable();
             $table->text('avaliacao');
             // opções do enum
             $table->enum('agenda', ['disponivel', 'ocupado']);
