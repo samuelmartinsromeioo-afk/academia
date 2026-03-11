@@ -48,6 +48,9 @@ Route::post('/cadastro/personal', [PersonalController::class, 'store'])->name('p
 Route::get('/cadastro/academia', [AcademiaController::class, 'create'])->name('form.academia');
 Route::post('/cadastro/academia', [AcademiaController::class, 'store'])->name('academia.store');
 
+// 4. Rotas APP
+
 Route::get('/cliente', [AlunoController::class, 'index'])->name('cliente.index');
-Route::post('/cliente/buscar', [AlunoController::class, 'buscarProximos'])->name('cliente.buscar');
+Route::post('/cliente/resultados', [AlunoController::class, 'buscarAcademias'])->name('buscar.academias');
+Route::post('/cliente/resultados_personal', [AlunoController::class, 'buscarPersonal'])->name('buscar.personal');
 
