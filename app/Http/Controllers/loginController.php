@@ -43,7 +43,7 @@ class loginController extends Controller
         // PERSONAL
     if ($personal = ModelsPersonal::where('email', $validated['email'])->first()) {
         if (Hash::check($validated['senha'], $personal->senha)) {
-            return redirect()->route('personal.dashboard');
+            return redirect()->route('personal.index');
         }
 
     }
@@ -58,7 +58,7 @@ class loginController extends Controller
     // ACADEMIA
     if ($academia = ModelsAcademia::where('email', $validated['email'])->first()) {
         if (Hash::check($validated['senha'], $academia->senha)) {
-            return redirect()->route('academia.dashboard');
+            return redirect()->route('academia.index');
 
         }
     }
