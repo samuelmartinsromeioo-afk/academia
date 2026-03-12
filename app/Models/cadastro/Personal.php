@@ -31,7 +31,5 @@ class Personal extends Model
         'agenda',
         'valor_secao',
         'idade',
-        'latitude',
-        'longitude'
     ];
 }

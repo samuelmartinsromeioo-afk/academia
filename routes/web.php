@@ -50,7 +50,7 @@ Route::post('/cadastro/academia', [AcademiaController::class, 'store'])->name('a
 
 // 4. Rotas APP
 
-Route::get('/cliente', [AlunoController::class, 'index'])->name('cliente.index');
+Route::get('/cliente/index', [AlunoController::class, 'index'])->name('cliente.index');
 Route::post('/cliente/resultados', [AlunoController::class, 'buscarAcademias'])->name('buscar.academias');
 Route::post('/cliente/resultados_personal', [AlunoController::class, 'buscarPersonal'])->name('buscar.personal');
 
