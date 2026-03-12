@@ -49,14 +49,7 @@ class AcademiaController extends Controller
         ]);
         
         $dados['senha'] = bcrypt($dados['senha']);
-        // 🔎 buscar coordenadas
-        $coords = $this->buscarCoordenadas($dados['cep']);
-
-        if ($coords) {
-            $dados['latitude'] = $coords['latitude'];
-            $dados['longitude'] = $coords['longitude'];
-        }
-
+        
         Academia::create($dados);
         return redirect()->route('form.academia')->with('sucesso', 'Personal cadastrado com sucesso!');
         return redirect()->route('cadastro.SelecaoCadastro');
@@ -65,40 +58,7 @@ class AcademiaController extends Controller
     /**
  * Buscar coordenadas (latitude e longitude) a partir do CEP.
  */
-    private function buscarCoordenadas($cep)
-    {
-        // Remover caracteres não numéricos do CEP
-        $cep = preg_replace('/[^0-9]/', '', $cep);
-
-        // Consulta ViaCEP para validar o CEP
-        $response = Http::get("https://viacep.com.br/ws/{$cep}/json/");
-
-        if ($response->ok()) {
-            $data = $response->json();
-
-            // Aqui você poderia usar o logradouro, cidade, estado para chamar uma API de geolocalização
-            // Exemplo: Google Maps API (você precisa da chave da API)
-            
-            $address = "{$data['logradouro']}, {$data['localidade']}, {$data['uf']}, Brasil";
-            $geo = Http::get("https://maps.googleapis.com/maps/api/geocode/json", [
-                'address' => $address,
-                'key' => env('GOOGLE_MAPS_API_KEY'),
-            ])->json();
-
-            if(!empty($geo['results'])) {
-                return [
-                    'latitude' => $geo['results'][0]['geometry']['location']['lat'],
-                    'longitude' => $geo['results'][0]['geometry']['location']['lng'],
-                ];
-            }
-            
-
-            // Por enquanto retorna null se não tiver API
-            return null;
-        }
-
-        return null; // se o CEP não for válido
-    }
+   
 
     /**
      * Display the specified resource.

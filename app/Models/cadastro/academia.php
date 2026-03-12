@@ -26,8 +26,6 @@ class Academia extends Model
         'senha',
         'cnpj',
         'tipos_aulas',
-        'latitude',
-        'longitude'
                             ];
 
     //garante com que os dados saiam de forma correta do banco de dados 

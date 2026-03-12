@@ -32,9 +32,6 @@ return new class extends Migration
             $table->enum('agenda', ['disponivel', 'ocupado']);
             $table->decimal('valor_secao', 5, 2); 
             $table->date('idade');
-            // 📍 localização para cálculo de distância
-            $table->decimal('latitude', 10, 7)->nullable();
-            $table->decimal('longitude', 10, 7)->nullable(); 
             $table->timestamps();
 
         });
