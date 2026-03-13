@@ -8,7 +8,7 @@ use App\Http\Controllers\Cadastro\PersonalController;
 use App\Http\Controllers\Cadastro\AcademiaController;
 use App\Http\Controllers\Cadastro\ClienteController;
 use App\Http\Controllers\App\AlunoController;
-
+use App\Models\cadastro\Cliente;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +40,7 @@ Route::get('/cadastro/ir-cadastro/{tipo}', [SelecaoController::class, 'redirecio
 
 Route::get('/cadastro/cliente', [ClienteController::class, 'create'])->name('form.cliente');
 Route::post('/cadastro/cliente', [ClienteController::class, 'store'])->name('cliente.store');
+Route::get('/cliente/update', [ClienteController::class, 'update'])->name('cliente.update');
 
 Route::get('/cadastro/personal', [PersonalController::class, 'create'])->name('form.personal');
 Route::post('/cadastro/personal', [PersonalController::class, 'store'])->name('personal.store');
@@ -50,7 +51,9 @@ Route::post('/cadastro/academia', [AcademiaController::class, 'store'])->name('a
 
 // 4. Rotas APP
 
-Route::get('/cliente/index', [AlunoController::class, 'index'])->name('cliente.index');
-Route::post('/cliente/resultados', [AlunoController::class, 'buscarAcademias'])->name('buscar.academias');
-Route::post('/cliente/resultados_personal', [AlunoController::class, 'buscarPersonal'])->name('buscar.personal');
+Route::get('/cliente/index', [ClienteController::class, 'index'])->name('cliente.index');
 
+
+
+Route::get('/cliente/buscarAcademia', [ClienteController::class, 'buscarAcademias'])->name('cliente.buscarAcademias');
+Route::get('/cliente/buscarPersonal', [ClienteController::class, 'buscarPersonal'])->name('cliente.buscarPersonal');
